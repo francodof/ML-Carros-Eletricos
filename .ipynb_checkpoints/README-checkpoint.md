@@ -1,4 +1,4 @@
-![Capa](img/capa.png)
+![Capa](img\capa.png)
 
 # Projeto Final do Curso Big Data Analytics com R e Microsoft Azure Machine Learning Versão 3.0 - Data Science Academy
 
@@ -102,7 +102,7 @@ O dataset contém as seguintes variáveis:
 
 A figura abaixo mostra a filtragem onde todos os valores NA ocorrem no dataset.
 
-![rows_na](img/rows_na.png)
+![rows_na](img\rows_na.png)
 
 Das 53 linhas do conjunto de dados, 11 delas apresentam valores ausentes. Também todos os modelos Tesla possuem valores NA em 3 dos 25 atributos, inclusive no consumo médio de energia, que é a variável target para este estudo . De antemão, sem ter o conhecimento de quais variáveis podem ser significantes para prever o consumo de energia, evitou-se a exclusão delas na análise. E pelo fato de a marca Tesla ter uma certa importância quando falamos de carros elétricos, não seria viável excluir as linhas relacionadas do dataset, até mesmo pela quantidade total de observações, que são poucas, apenas 53.
 

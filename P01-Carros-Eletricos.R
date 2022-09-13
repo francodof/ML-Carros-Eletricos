@@ -13,28 +13,31 @@
 # Disponível em: https://data.mendeley.com/datasets/tb9yrptydn/2
 # Acessado em Set/2022
 
-
+# Versão da Linguagem R utilizada: 
+# R version 4.2.0 (2022-04-22 ucrt) -- "Vigorous Calisthenics"
+# Copyright (C) 2022 The R Foundation for Statistical Computing
+# Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 rm(list=ls())
 dev.off()
 
 # Configurando o diretório de trabalho
-setwd("D:/Cursos/DSA/Formacao-Cientista-de-Dados/Big-Data-Analytics-R-Azure-ML/20-Projetos-com-Feedback/P01-Carros-Eletricos")
+setwd("D:/Cursos/DSA/Formacao-Cientista-de-Dados/Big-Data-Analytics-R-Azure-ML/20-Projetos-com-Feedback/P01-Carros-Eletricos/Carros-Eletricos-git")
 getwd()
+
 
 # Carrega os pacotes
 library("pacman")
-# p_load(readxl,dplyr, ggplot2, tidyr, data.table, cowplot, GGally, randomForest, caret, Amelia, psych)
-p_load(readxl,dplyr, ggplot2, data.table, Amelia, GGally, caret, psych)
-library(corrgram)
-library(corrplot)
+p_load(readxl,dplyr, ggplot2, data.table, Amelia, GGally, caret, psych, car, lmtest)
+#library(corrgram)
+#library(corrplot)
 
 search()
 
 ##### Carga e Visualização dos Dados #####
 
 # Carrega o dataset
-dados <- read_excel("datasets/FEV-data-Excel.xlsx")
+dados <- read_excel("./datasets/FEV-data-Excel.xlsx")
 
 # Visualiza os dados
 View(dados)
@@ -456,7 +459,7 @@ durbinWatsonTest(modelo1_lm)
 bptest(modelo1_lm)
 
 # Ausência de Multicolinearidade: r > 0.9 (ou 0.8)
-pairs.panels(numeric_data_final)
+pairs.panels(df_numeric_data)
 # VIF: Fator de inflação de variância. 
 vif(modelo1_lm) # Multicolinearidade: VIF > 10
 
@@ -547,8 +550,9 @@ plot(teste$ConsumoMedioEnergia, predictedValues)
 # Tabela de comparação entre os valores reais e previstos do conjunto de dados 'teste'
 table_predict <- cbind(predictedValues, teste$ConsumoMedioEnergia)
 colnames(table_predict) <- c('Previsto', 'Real')
-table_predict <- as.data.frame(resultados)
+table_predict <- as.data.frame(table_predict)
 table_predict
+View(round(table_predict, 2))
 
 
 
